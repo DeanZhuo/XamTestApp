@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Media"
+             x:Class="TestApp.Media">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="20">
+                <Button Text="Take a Photo" WidthRequest="200" HeightRequest="60"
+                    x:Name="takePhoto" Clicked="takePhoto_Clicked" />
+                <Button Text="Pick a Photo" WidthRequest="200" HeightRequest="60"
+                    x:Name="pickPhoto" Clicked="pickPhoto_Clicked" />
+                <Button Text="Take A Video" WidthRequest="200" HeightRequest="60"
+                    x:Name="takeVideo" Clicked="takeVideo_Clicked" />
+                <Button Text="Pick A Video" WidthRequest="200" HeightRequest="60"
+                    x:Name="pickVideo" Clicked="pickVideo_Clicked" />
+                <Image x:Name="image" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

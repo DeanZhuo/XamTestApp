@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Hi There!"
+             x:Class="TestApp.Main">
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Label Text="Welcome to Dean's Xamarin.Forms TestApp!"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand" />
+            <Button Text="Keypad" WidthRequest="200" HeightRequest="60" Clicked="KeypadButton" />
+            <Button Text="Scanner" WidthRequest="200" HeightRequest="60" Clicked="ScannerButton" />
+            <Button Text="Media" WidthRequest="200" HeightRequest="60" Clicked="MediaButton" />
+            <Button Text="ListView" WidthRequest="200" HeightRequest="60" Clicked="ListViewButton" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
