@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 
 namespace TestApp
 {
@@ -12,7 +13,7 @@ namespace TestApp
         }
 
         protected override void OnStart()
-        {
+        {  
         }
 
         protected override void OnSleep()

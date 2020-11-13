@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "412681585961",
+    "firebase_url": "https://xamtestapp-23765.firebaseio.com",
+    "project_id": "xamtestapp-23765",
+    "storage_bucket": "xamtestapp-23765.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412681585961:android:a961221f09b8b9f5f36338",
+        "android_client_info": {
+          "package_name": "com.deanzhuo.testapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "412681585961-6tr7vihfrirkmu4d3paenecs20qg9rgn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZk30k6CWyIDbLJfmu1rxmmJqAHfNbJJI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "412681585961-6tr7vihfrirkmu4d3paenecs20qg9rgn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
