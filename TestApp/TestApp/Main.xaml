@@ -5,7 +5,7 @@
              x:Class="TestApp.Main">
     <ContentPage.Content>
         <StackLayout Padding="20">
-            <Label Text="Welcome to Dean's Xamarin.Forms TestApp!" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            <Label Text="Welcome to Dean's Xamarin.Forms TestApp!" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
             <Button Text="Keypad" WidthRequest="200" HeightRequest="60" Clicked="KeypadButton" />
             <Button Text="Scanner" WidthRequest="200" HeightRequest="60" Clicked="ScannerButton" />
             <Button Text="Media" WidthRequest="200" HeightRequest="60" Clicked="MediaButton" />

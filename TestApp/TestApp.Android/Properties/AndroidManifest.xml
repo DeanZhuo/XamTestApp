@@ -18,6 +18,9 @@
         <category android:name="${applicationId}" />
       </intent-filter>
     </receiver>
+    <meta-data
+      android:name="com.google.firebase.messaging.default_notification_icon"
+      android:resource="@android:drawable/stat_notify_sync" />
 	</application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
