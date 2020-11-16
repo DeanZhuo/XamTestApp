@@ -1,4 +1,5 @@
-﻿using Android.App;
+﻿using Acr.UserDialogs;
+using Android.App;
 using Android.Content.PM;
 using Android.Gms.Common;
 using Android.Gms.Extensions;
@@ -6,6 +7,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Util;
 using Firebase.Iid;
+using Plugin.FacebookClient;
 using Plugin.Media;
 
 namespace TestApp.Droid
@@ -26,6 +28,8 @@ namespace TestApp.Droid
             base.OnCreate(savedInstanceState);
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
             CrossMedia.Current.Initialize();
+            UserDialogs.Init(this);
+            FacebookClientManager.Initialize(this);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
@@ -99,6 +103,12 @@ namespace TestApp.Droid
 
             var notificationManager = (NotificationManager)GetSystemService(Android.Content.Context.NotificationService);
             notificationManager.CreateNotificationChannel(channel);
+        }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Android.Content.Intent intent)
+        {
+            base.OnActivityResult(requestCode, resultCode, intent);
+            FacebookClientManager.OnActivityResult(requestCode, resultCode, intent);
         }
     }
 }

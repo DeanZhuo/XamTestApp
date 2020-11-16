@@ -10,6 +10,7 @@
             <Button Text="Scanner" WidthRequest="200" HeightRequest="60" Clicked="ScannerButton" />
             <Button Text="Media" WidthRequest="200" HeightRequest="60" Clicked="MediaButton" />
             <Button Text="ListView" WidthRequest="200" HeightRequest="60" Clicked="ListViewButton" />
+            <Button Text="SocialMedia" WidthRequest="200" HeightRequest="60" Clicked="SocialButton" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

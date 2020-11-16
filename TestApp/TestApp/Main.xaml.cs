@@ -32,5 +32,10 @@ namespace TestApp
         {
             await Navigation.PushAsync(new ListViewTutor());
         }
+
+        private async void SocialButton(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SocialMediaPage());
+        }
     }
 }

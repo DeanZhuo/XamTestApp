@@ -7,13 +7,13 @@
         <ScrollView>
             <StackLayout Padding="20">
                 <Button Text="Take a Photo" WidthRequest="200" HeightRequest="60"
-                    x:Name="takePhoto" Clicked="takePhoto_Clicked" />
+                    x:Name="takePhoto" />
                 <Button Text="Pick a Photo" WidthRequest="200" HeightRequest="60"
-                    x:Name="pickPhoto" Clicked="pickPhoto_Clicked" />
+                    x:Name="pickPhoto" />
                 <Button Text="Take A Video" WidthRequest="200" HeightRequest="60"
-                    x:Name="takeVideo" Clicked="takeVideo_Clicked" />
+                    x:Name="takeVideo" />
                 <Button Text="Pick A Video" WidthRequest="200" HeightRequest="60"
-                    x:Name="pickVideo" Clicked="pickVideo_Clicked" />
+                    x:Name="pickVideo" />
                 <Image x:Name="image" />
             </StackLayout>
         </ScrollView>

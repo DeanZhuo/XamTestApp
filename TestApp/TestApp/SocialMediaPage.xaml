@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestApp.SocialMediaPage"
+             Title="Social Page">
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            <Label x:Name="LoginFb" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" TextColor="Black" FontSize="Medium" />
+            <Label x:Name="FbToken" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" FontSize="Small" />
+            <Label x:Name="LoginTwit" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" TextColor="Black" FontSize="Medium" />
+            <Label x:Name="TwitToken" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" FontSize="Small" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Margin="10" Grid.Column="0">
+                    <Button x:Name="FbButton" Clicked="FbLog" Text="Login with Facebook" BackgroundColor="#4267B2" TextColor="White" HeightRequest="50" />
+                    <Button x:Name="FbPostButton" Clicked="FbPost" Text="Post Facebook" BackgroundColor="#4267B2" TextColor="White" HeightRequest="50" />
+                    <Button x:Name="FbLogoutButton" Clicked="FbOut" Text="Logout Facebook" BackgroundColor="#4267B2" TextColor="White" HeightRequest="50" />
+                </StackLayout>
+                <StackLayout Margin="10" Grid.Column="1">
+                    <Button x:Name="TwitButton" Clicked="TwitLog" Text="Login with Twitter" BackgroundColor="#1DA1F2" TextColor="White" HeightRequest="50" />
+                    <Button x:Name="TwitPostButton" Clicked="TwitPost" Text="Post Twitter" BackgroundColor="#1DA1F2" TextColor="White" HeightRequest="50" />
+                    <Button x:Name="TwitLogoutButton" Clicked="TwitOut" Text="Logout Twitter" BackgroundColor="#1DA1F2" TextColor="White" HeightRequest="50" />
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

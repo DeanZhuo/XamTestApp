@@ -5,6 +5,7 @@ using Xamarin.Forms.Xaml;
 
 namespace TestApp
 {
+    //media
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Media : ContentPage
     {
@@ -100,22 +101,6 @@ namespace TestApp
                 await DisplayAlert("Video Selected", "Location: " + file.Path, "OK");
                 file.Dispose();
             };
-        }
-
-        private void takePhoto_Clicked(object sender, System.EventArgs e)
-        {
-        }
-
-        private void pickPhoto_Clicked(object sender, System.EventArgs e)
-        {
-        }
-
-        private void takeVideo_Clicked(object sender, System.EventArgs e)
-        {
-        }
-
-        private void pickVideo_Clicked(object sender, System.EventArgs e)
-        {
         }
     }
 }

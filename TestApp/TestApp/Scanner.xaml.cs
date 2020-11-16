@@ -4,6 +4,7 @@ using ZXing;
 
 namespace TestApp
 {
+    //scanner
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Scanner : ContentPage
     {

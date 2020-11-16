@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestApp.PostSocial"
+             Title="Post Social Media">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="70"/>
+                </Grid.RowDefinitions>
+
+                <Editor x:Name="PostText" Grid.Row="0" IsEnabled="True" />
+                <StackLayout Grid.Row="1">
+                    <Button x:Name="PhotoButton" Text="Take a picture!" BackgroundColor="Wheat" Clicked="PhotoButton_Clicked" />
+                    <Image x:Name="PhotoImage" Margin="20" />
+                </StackLayout>
+                <Button x:Name="PostButton" Text="Post" Clicked="PostButton_Clicked" Grid.Row="2"/>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

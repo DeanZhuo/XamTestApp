@@ -5,6 +5,7 @@ using Xamarin.Forms;
 
 namespace TestApp
 {
+    //keypad
     internal class KeypadViewModel : INotifyPropertyChanged
     {
         private string inputString = "";
