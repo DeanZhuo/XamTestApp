@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Acr.UserDialogs;
+using Newtonsoft.Json.Linq;
 using Plugin.FacebookClient;
 using System;
 using System.Diagnostics;
@@ -27,7 +28,7 @@ namespace TestApp
             TwitLogoutButton.IsEnabled = false;
         }
 
-        private IFacebookClient _facebookService = CrossFacebookClient.Current;
+        private static IFacebookClient _facebookService = CrossFacebookClient.Current;
 
         private async void FbLog(object sender, EventArgs e)
         {
@@ -42,13 +43,12 @@ namespace TestApp
 
         private async void FbPost(object sender, EventArgs e)
         {
-            //not tested
-            await Navigation.PushAsync(new PostSocial("Facebook", FbToken.Text));
+            await Navigation.PushAsync(new PostSocial("Facebook"));
         }
 
         private async void TwitPost(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PostSocial("Twitter", TwitToken.Text));
+            await Navigation.PushAsync(new PostSocial("Twitter"));
         }
 
         private void FbOut(object sender, EventArgs e)
@@ -76,41 +76,83 @@ namespace TestApp
                 if (_facebookService.IsLoggedIn)
                     _facebookService.Logout();
 
-                EventHandler<FBEventArgs<string>> userDataDelegate = null;
+                string[] fbPermisions = { "publish_pages" };
+                FacebookResponse<bool> response = await CrossFacebookClient.Current.LoginAsync(fbPermisions, FacebookPermissionType.Publish);
 
-                userDataDelegate = async (object sender, FBEventArgs<string> e) =>
+                switch (response.Status)
                 {
-                    if (e == null) return;
+                    case FacebookActionStatus.Completed:
+                        await LoadData();
+                        FbToken.Text = _facebookService.ActiveToken;
+                        FbButton.IsEnabled = false;
+                        FbPostButton.IsEnabled = true;
+                        FbLogoutButton.IsEnabled = true;
+                        Debug.WriteLine("Facebook login success");
+                        break;
 
-                    switch (e.Status)
-                    {
-                        case FacebookActionStatus.Completed:
-                            var facebookProfile = await Task.Run(() => JsonConvert.DeserializeObject<FacebookProfile>(e.Data));
-                            LoginFb.Text = $"{facebookProfile.FirstName} {facebookProfile.LastName}";
-                            FbToken.Text = _facebookService.ActiveToken;
-                            FbButton.IsEnabled = false;
-                            FbPostButton.IsEnabled = true;
-                            FbLogoutButton.IsEnabled = true;
-                            Debug.WriteLine("Facebook login success");
-                            break;
+                    case FacebookActionStatus.Canceled:
+                        break;
 
-                        case FacebookActionStatus.Canceled:
-                            break;
-                    }
+                    case FacebookActionStatus.Unauthorized:
+                        UserDialogs.Instance.Alert(response.Message, "Unauthorized", "Ok");
+                        break;
 
-                    _facebookService.OnUserData -= userDataDelegate;
-                };
-
-                _facebookService.OnUserData += userDataDelegate;
-
-                string[] fbRequestFields = { "email", "first_name", "gender", "last_name" };
-                string[] fbPermisions = { "email" };
-                await _facebookService.RequestUserDataAsync(fbRequestFields, fbPermisions);
+                    case FacebookActionStatus.Error:
+                        UserDialogs.Instance.Alert(response.Message, "Error", "Ok");
+                        break;
+                }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.ToString());
             }
+        }
+
+        private async Task LoadData()
+        {
+            var jsonData = await _facebookService.RequestUserDataAsync(new string[] { "email", "name" }, new string[] { });
+            var data = JObject.Parse(jsonData.Data);
+            LoginFb.Text = data["name"].ToString();
+        }
+
+        public static async Task<string> PostFacebook(string text, byte[] imageArray)
+        {
+            string message = string.Empty;
+            try
+            {
+                FacebookSharePhoto photo = new FacebookSharePhoto(text, imageArray);
+                FacebookSharePhoto[] photos = new FacebookSharePhoto[] { photo };
+                FacebookSharePhotoContent photoContent = new FacebookSharePhotoContent(photos, null, text);
+                Console.WriteLine("Uploading...");
+                var ret = await _facebookService.ShareAsync(photoContent);
+                switch (ret.Status)
+                {
+                    case FacebookActionStatus.Completed:
+                        message = "Facebook post success";
+                        Debug.WriteLine("Facebook post success");
+                        break;
+
+                    case FacebookActionStatus.Canceled:
+                        message = "Facebook post canceled";
+                        Debug.WriteLine("Facebook post success");
+                        break;
+
+                    case FacebookActionStatus.Unauthorized:
+                        message = ret.Message;
+                        Debug.WriteLine("Facebook post success");
+                        break;
+
+                    case FacebookActionStatus.Error:
+                        message = ret.Message;
+                        Debug.WriteLine("Facebook post success");
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("PostFB: " + ex.ToString());
+            }
+            return message;
         }
     }
 }

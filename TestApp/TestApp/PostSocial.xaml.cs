@@ -12,14 +12,12 @@ namespace TestApp
     public partial class PostSocial : ContentPage
     {
         private string Media;
-        private string Token;
         private byte[] imageArray = null;
 
-        public PostSocial(string media, string token)
+        public PostSocial(string media)
         {
             InitializeComponent();
             Media = media;
-            Token = token;
         }
 
         private void PhotoButton_Clicked(object sender, EventArgs e)
@@ -108,14 +106,12 @@ namespace TestApp
                 UserDialogs.Instance.Alert("Please Pick Image!");
                 return;
             }
-            UserDialogs.Instance.Alert(PostText.Text, Media);
 
-            //if (Media.Equals("facebook"))
-            //{
-            //IFacebookClient _facebookService = CrossFacebookClient.Current;
-            //await _facebookService.SharePhotoAsync(imageArray, PostText.Text);
-            //UserDialogs.Instance.Alert(PostText.Text, Media);
-            //}
+            if (Media.Equals("Facebook"))
+            {
+                string result = SocialMediaPage.PostFacebook(PostText.Text, imageArray).Result;
+                UserDialogs.Instance.Alert(PostText.Text, result);
+            }
         }
     }
 }
